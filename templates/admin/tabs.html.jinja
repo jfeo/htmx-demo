@@ -1,0 +1,11 @@
+<ul class="Tabs" hx-target:inherited="#tabs">
+    <li class="TabsItem {% if tab == "account_requests" %}TabsItem--active{% endif %}">
+        <button hx-get="/admin/tabs/account_requests">Account Request</button>
+    </li>
+    <li class="TabsItem {% if tab == "server_status" %}TabsItem--active{% endif %}">
+        <button hx-get="/admin/tabs/server_status">Server Status</button>
+    </li>
+    <li class="TabsItem {% if tab == "site_stats" %}TabsItem--active{% endif %}">
+        <button hx-get="/admin/tabs/site_stats">Site Stats</button>
+    </li>
+</ul>

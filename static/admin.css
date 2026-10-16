@@ -1,0 +1,473 @@
+@charset "UTF-8";
+
+.AdminApp {
+  /*
+  # --- BEGIN_HEADER ---
+  #
+  # Tabs.scss - dual licensed source code file
+  # Copyright (C) 2025 - 2026  SCIENCE HPC Center at UCPH
+  #
+  # This file is part of MiGrid-UX.
+  #
+  # MiGrid-UX is free software: you can redistribute it and/or modify it under
+  # the terms of either
+  # the MIT License (LICENSES/LICENSE.MIT or https://opensource.org/licenses/MIT)
+  # OR
+  # the GNU General Public License version 2 (LICENSES/LICENSE.GPLv2 or
+  # https://opensource.org/license/gpl-2.0) or any later version
+  # at your option. The MiGrid-UX files may NOT be copied, modified, or
+  # distributed except according to those terms.
+  #
+  # --- END_HEADER ---
+  */
+}
+
+.AdminApp .Tabs {
+  --bs-nav-tabs-border-width: var(--bs-border-width);
+  --bs-nav-tabs-border-color: var(--bs-border-color);
+  --bs-nav-tabs-border-radius: var(--bs-border-radius);
+  --bs-nav-tabs-link-hover-border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+  --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
+  --bs-nav-tabs-link-active-bg: var(--bs-body-bg);
+  --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-body-bg);
+  border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: var(--bs-link-color);
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-disabled-color: var(--bs-secondary-color);
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .AdminApp .Tabs {
+    display: block;
+  }
+}
+
+.AdminApp .Tabs .TabsItem {
+  border: var(--bs-nav-tabs-border-width) solid transparent;
+  display: block;
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+  background: none;
+  border-top-width: var(--bs-nav-tabs-border-width);
+  border-left-width: var(--bs-nav-tabs-border-width);
+  border-right-width: var(--bs-nav-tabs-border-width);
+  border-top-left-radius: var(--bs-nav-tabs-border-radius);
+  border-top-right-radius: var(--bs-nav-tabs-border-radius);
+  border-color: transparent;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.AdminApp .Tabs .TabsItem--active {
+  color: var(--bs-nav-tabs-link-active-color);
+  background-color: var(--bs-nav-tabs-link-active-bg);
+  border-bottom-color: transparent;
+  border-color: var(--bs-nav-tabs-link-active-border-color);
+}
+
+.AdminApp .Tabs button {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+}
+
+.AdminApp .Tabs .TabsItem:hover,
+.AdminApp .Tabs .TabsItem--active {
+  border-color: var(--bs-nav-tabs-link-hover-border-color);
+}
+
+@media (max-width: 992px) {
+  .AdminApp .Tabs .TabsItem {
+    border-radius: 0;
+  }
+
+  .AdminApp .Tabs .TabsItem:first-child {
+    border-top: 0;
+  }
+}
+
+.AdminApp .TabsPanel {
+  display: none;
+}
+
+.AdminApp .TabsPanel--active {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .AdminApp .modal .modal-dialog {
+    min-height: 800px;
+  }
+}
+
+.AdminApp .modal {
+  --mig-ux-header-margin: 1.5rem;
+}
+
+.AdminApp .modal .modal-header {
+  display: flex;
+  flex-grow: 0;
+  flex-direction: column;
+}
+
+.AdminApp .modal .modal-title {
+  display: flex;
+  flex-grow: 0;
+  width: 95%;
+  justify-content: space-between;
+  margin-top: var(--mig-ux-header-margin);
+}
+
+.AdminApp .modal .modal-subtitle {
+  margin-top: 0.5rem;
+  width: 95%;
+  font-size: 1rem;
+  color: var(--bs-secondary-color);
+  line-height: 1.5;
+}
+
+.AdminApp .modal .modal-footer {
+  flex-grow: 0;
+}
+
+.AdminApp .modal .modal-content {
+  height: 100%;
+}
+
+.AdminApp .modal .modal-body {
+  /*min-height: 500px;*/
+  flex-grow: 1;
+  /*myself*/
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  .AdminApp .modal .modal-body {
+    padding-top: 0;
+  }
+}
+
+.AdminApp .modal .modal-body .Tabs {
+  justify-content: right;
+}
+
+.AdminApp .modal .modal-body .tab-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.AdminApp .modal .modal-body .tab-content>.active {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.AdminApp {
+  --mig-ux-field-margin: 0.5rem;
+}
+
+.AdminApp .form-label {
+  margin-bottom: var(--mig-ux-field-margin);
+}
+
+.AdminApp .form-label__error {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-left: var(--mig-ux-field-margin);
+  margin-right: var(--mig-ux-field-margin);
+  margin-bottom: 2em;
+}
+
+.AdminApp .form-label__error p {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  z-index: 1;
+  position: absolute;
+  background-color: var(--bs-warning);
+  border: var(--bs-border-width) solid var(--bs-warning);
+  border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius);
+  margin-bottom: 0;
+}
+
+.AdminApp .form-label__error--compensate p {
+  top: calc(-1 * var(--mig-ux-field-margin));
+}
+
+.AdminApp .form-label {
+  /***
+    nested form fields
+    */
+}
+
+.AdminApp .form-label input,
+.AdminApp .form-label select {
+  width: calc(100% - 2 * var(--mig-ux-field-margin));
+  margin-left: var(--mig-ux-field-margin);
+  margin-right: var(--mig-ux-field-margin);
+  margin-top: var(--mig-ux-field-margin);
+  /* align as are adjacent fields */
+}
+
+.AdminApp {
+  /***
+    form fields adacent to a form label
+    */
+}
+
+.AdminApp .form-label+input,
+.AdminApp .form-label+select {
+  width: calc(100% - 2 * var(--mig-ux-field-margin));
+  margin-left: var(--mig-ux-field-margin);
+  margin-right: var(--mig-ux-field-margin);
+  margin-bottom: var(--mig-ux-field-margin);
+  /* consistent gap between fields */
+}
+
+.AdminApp .icon-button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.AdminApp .server-daemons .daemon-status {
+  font-weight: bold;
+}
+
+.AdminApp .server-daemons .daemon-status.running {
+  color: green;
+}
+
+.AdminApp .server-daemons .daemon-status.not_running {
+  color: rgb(173, 0, 0);
+}
+
+.AdminApp .server-daemons .daemon-pid {
+  color: white;
+  font-size: 0.8rem;
+  background-color: rgb(94, 107, 145);
+  border-radius: 5px;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+.AdminApp .server-logs {
+  resize: vertical;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.AdminApp .server-logs thead {
+  position: sticky;
+  top: 0;
+}
+
+.AdminApp .server-logs .log-timestamp {
+  color: grey;
+}
+
+.AdminApp .server-logs .log-level {
+  font-weight: bold;
+}
+
+.AdminApp .server-logs .log-level.info {
+  color: rgb(19, 19, 184);
+}
+
+.AdminApp .server-logs .log-level.warning {
+  color: rgb(180, 117, 0);
+}
+
+.AdminApp .server-logs .log-level.error {
+  color: rgb(173, 0, 0);
+}
+
+.AdminApp .server-logs .log-level.debug {
+  color: rgb(167, 0, 167);
+}
+
+.AdminApp .data_placeholder,
+.AdminApp [data-bind-observe=results_placeholder],
+.AdminApp [data-bind-observe=server_logs_placeholder],
+.AdminApp [data-bind-observe=server_daemons_placeholder],
+.AdminApp [data-bind-observe=stats_placeholder] {
+  flex-grow: 1;
+  /* fill the height */
+  width: 100%;
+  align-content: center;
+  text-align: center;
+}
+
+.AdminApp #tabs > div {
+  padding-top: 16px;
+}
+
+.AdminApp .settings-aid {
+  position: relative;
+  justify-content: right;
+}
+
+.AdminApp .settings-aid_button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.AdminApp .settings-aid_button::before {
+  content: "⚙";
+}
+
+.AdminApp .settings-aid_toggles {
+  background-color: white;
+  border: 1px solid black;
+  z-index: 9999;
+  position: absolute;
+  right: 30px;
+  top: -50%;
+  flex-direction: column;
+  justify-content: left;
+  padding: 5px;
+}
+
+.AdminApp .settings-aid_toggles label {
+  font-size: 12px;
+  display: block;
+}
+
+.AdminApp .settings-aid_toggles input {
+  margin-right: 3px;
+}
+
+.AdminApp div.account_requests {
+  overflow-x: scroll;
+}
+
+.AdminApp div.account_requests h5 {
+  padding-bottom: 24px;
+}
+
+.AdminApp div.account_requests .col-settings {
+  box-sizing: border-box;
+  width: 30px;
+}
+
+.AdminApp div.account_requests .sel-edit {
+  cursor: pointer;
+  display: block;
+  transform: rotate(135deg);
+}
+
+.link {
+  cursor: pointer;
+}
+
+.AdminApp div.account_requests .sel-edit::before {
+  content: "✏";
+}
+
+.AdminApp {
+  /***
+    generic styles
+    */
+}
+
+.AdminApp .tab-actions {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+.AdminApp .tab-actions__grabheight {
+  flex-grow: 1;
+}
+
+.AdminApp .tab-actions__error {
+  width: 100%;
+  text-align: center;
+  margin: 0.25em;
+}
+
+.AdminApp .tab-actions__controls {
+  display: flex;
+}
+
+.AdminApp .tab-actions__controls> :not(:last-child) {
+  margin-right: 1em;
+}
+
+.AdminApp .tab-actions__controls .form-switch {
+  display: flex;
+  align-items: center;
+  gap: 3em;
+}
+
+.AdminApp .fields-grid {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.AdminApp .fields-grid .form-label {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .AdminApp .fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.AdminApp .fields-horizontal {
+  --gutter-x: 1.5rem;
+  --gutter-y: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.AdminApp .fields-horizontal>* {
+  flex-grow: 1;
+  margin-top: calc(-1 * var(--gutter-y));
+}
+
+@media (max-width: 992px) {
+  .AdminApp .fields-horizontal {
+    flex-direction: column;
+  }
+
+  .AdminApp .fields-horizontal .form-label {
+    margin-bottom: calc(3 * var(--mig-ux-field-margin));
+  }
+}
+
+@media (max-width: 992px) {
+  .AdminApp .fields-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/*# sourceMappingURL=admin.css.map */

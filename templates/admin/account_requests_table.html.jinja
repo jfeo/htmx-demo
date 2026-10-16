@@ -1,0 +1,97 @@
+<form>
+  <input class="account_request_search_params" type="hidden" name="fields" value="{{ fields | join(',') }}">
+</form>
+<table class="migux-table migux-table--striped fields-table">
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" class="form-check-input" />
+      </th>
+      <th>Name</th>
+      <th>Email</th>
+      {%- set field_headings = {
+        "organization": "Organization",
+        "country": "Country",
+        "state": "State",
+        "peers_full_name": "Contact Name",
+        "peers_email": "Contact Email",
+        "comment": "Comment",
+        "auth_access": "Auth Access",
+        "created": "Created At",
+      } -%}
+      {% for field in fields %}
+        <th>
+          {% if field in field_headings %}{{field_headings[field]}}{% else %}{{field}}{% endif %}
+        </th>
+      {% endfor %}
+      <th class="col-settings settings-aid">
+        <button class="settings-aid_button" hx-on:click='$id("settings-aid-modal").showModal()'></button>
+        <dialog
+          id="settings-aid-modal"
+          class="settings-aid_toggles"
+          hx-include:inherited='input[type="checkbox"]'
+          hx-target:inherited="#account_requests_table"
+        >
+          <label><input type="checkbox" checked disabled />Full
+            name</label>
+          <label><input type="checkbox" checked disabled />Email</label>
+          <label><input type="checkbox" name="fields.organization" {% if "organization" in fields %}checked{% endif %} />Organization</label>
+          <label><input type="checkbox" name="fields.country" {% if "country" in fields %}checked{% endif %} />Country</label>
+          <label><input type="checkbox" name="fields.state" {% if "state" in fields %}checked{% endif %} />State</label>
+          <label><input type="checkbox" name="fields.peers_full_name" {% if "peers_full_name" in fields %}checked{% endif %} />Contact Name</label>
+          <label><input type="checkbox" name="fields.peers_email" {% if "peers_email" in fields %}checked{% endif %} />Contact Email</label>
+          <label><input type="checkbox" name="fields.comment" {% if "comment" in fields %}checked{% endif %} />Comment</label>
+          <label><input type="checkbox" name="fields.auth_access" {% if "auth_access" in fields %}checked{% endif %} />Auth Access</label>
+          <label><input type="checkbox" name="fields.created" {% if "created" in fields %}checked{% endif %} />Created At</label>
+          <button hx-get="/admin/account_requests/table" type="submit" class="btn btn-primary btn-sm">Apply</button>
+          <button hx-on:click='$id("settings-aid-modal").close()' class="btn btn-secondary btn-sm">Close</button>
+        </dialog>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in entries %}
+    <tr>
+      <td>
+        <input type="hidden" name="peers" value="{{ entry.distinguished_name }}">
+        <input type="checkbox">
+      </td>
+        <td>{{ entry.full_name }}</td>
+        <td>{{ entry.email }}</td>
+        {% for field in fields %}
+        <td>{{ entry[field] }}</td>
+        {% endfor %}
+        <td>
+          <span class="sel-edit"></span>
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="tab-actions">
+  <span class="tab-actions__grabheight"></span>
+  <span class="tab-actions__error"></span>
+  <div class="tab-actions__controls">
+    {% if not state %}
+    <span>
+      You must filter accounts by state to batch process them.
+    </span>
+    {% endif %}
+    {% if state %}
+    <button class="btn btn-secondary">
+      Reject
+    </button>
+    {% endif %}
+    {% if state == "requested" %}
+    <button class="btn btn-primary">
+      Forward
+    </button>
+    {% endif %}
+    {% if state == "accepted" %}
+    <button class="btn btn-primary">
+      Accept
+    </button>
+    {% endif %}
+  </div>
+</div>
+<i id="account-requests-count" hx-swap-oob="true">{{ entries | list | count }}</i>

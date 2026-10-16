@@ -1,0 +1,12 @@
+{% with tab = "site_stats" %}
+    {% include "admin/tabs.html.jinja" %}
+{% endwith %}
+
+<div class="TabsPanel--active" id="site_stats">
+    <h5>
+    Site Stats
+    </h5>
+    <div id="site_stats_content" hx-get="/admin/site/stats" hx-target="#site_stats_content" hx-trigger="load delay:100ms">
+        <div class="data_placeholder">Loading site statistics...</div>
+    </div>
+</div>

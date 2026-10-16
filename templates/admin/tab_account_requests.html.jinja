@@ -1,0 +1,34 @@
+{% with tab = "account_requests" %}
+    {% include "admin/tabs.html.jinja" %}
+{% endwith %}
+
+<div class="account_requests TabsPanel--active" id="account_requests" hx-include=".account_request_search_params" hx-target:inherited="#account_requests_table" >
+    <h5>
+        Account Requests (<span id="account-requests-count">?</span> of {{ summary.total }})
+        <span data-tooltip="TODO: Account requests tooltip text here" tabindex="0"><i>&quest;</i></span>
+    </h5>
+
+    <div class="fields-horizontal">
+        <span class="form-label">Account Request Query
+            <span data-tooltip="TODO: Account request query tooltip." tabindex="0"><i>&quest;</i></span>
+            <input type="text" class="account_request_search_params form-control" id="account_requests_query" name="query"
+                placeholder="Type to search..."
+                hx-get="/admin/account_requests/table"
+            />
+        </span>
+
+        <span class="form-label">Account Request State
+            <span data-tooltip="An account request can be either requested &mdash; if an external user has create a request, but it has not been forwarded yet" tabindex="0"><i>&quest;</i></span>
+            <select name="state" class="account_request_search_params" hx-get="/admin/account_requests/table" hx-trigger="change">
+                <option value="">All ({{ summary.total }})</option>
+                <option value="requested">Requested ({{ summary.requested }})</option>
+                <option value="pending">Pending ({{ summary.pending }})</option>
+                <option value="accepted">Accepted ({{ summary.accepted }})</option>
+            </select>
+        </span>
+    </div>
+
+    <div id="account_requests_table" hx-get="/admin/account_requests/table" hx-trigger="load delay:300ms">
+        <div class="data_placeholder">Loading account requests...</div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+{% with tab = "server_status" %}
+    {% include "admin/tabs.html.jinja" %}
+{% endwith %}
+
+<div name="server_status" class="TabsPanel--active" id="server_status">
+    <h5>
+        Server Status
+    </h5>
+    <div hx-target:inherited="#server-daemons-tbody">
+        <h6>
+            Grid Daemons
+            <button class="icon-button" hx-get="/admin/server/daemons">&#x27F3;</button>
+            <small>(last updated <i id="server_daemons_last_updated"></i>)</small>
+        </h6>
+        <table class="server-daemons migux-table migux-table--striped">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        PIDs
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="server-daemons-tbody" hx-get="/admin/server/daemons" hx-trigger="load delay:100ms"></tbody>
+        </table>
+    </div>
+    <div hx-target:inherited="#server-logs-tbody" hx-swap:inherited="innerHTML" hx-include:inherited='[name="server_logs_last_lines"]'>
+        <h6>Server Logs</h6>
+        <label>Last lines <input name="server_logs_last_lines" type="number" value="10" hx-get="/admin/server/logs" hx-trigger="change"/></label><span
+            data-tooltip="Fetch the N last lines of the server log. Write a value and press enter, and the logs will be fetched."
+            tabindex="0"><i>&quest;</i></span>
+        <div class="server-logs">
+            <table class="migux-table migux-table--striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Timestamp
+                        </th>
+                        <th>
+                            Level
+                        </th>
+                        <th>
+                            Message
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="server-logs-tbody" hx-get="/admin/server/logs" hx-trigger="load delay:100ms">
+                    <tr>
+                        <td colspan="3">
+                            <div class="data_placeholder">Loading server logs...</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

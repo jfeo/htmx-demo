@@ -1,0 +1,30 @@
+<div data-migrole="app" data-migapp="admin" class="AdminApp">
+  <div class="modal" id="admin-modal" aria-labelledby="admin-modal-label" aria-modal="true" role="dialog" style="display: block">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="modal-title-msg">
+              <h1 id="admin-modal-label">Administration Panel</h1>
+            </div>
+            <div class="modal-title-buttons">
+              <button class="modal-close CloseButton" aria-label="Close" hx-on:click="$first('[data-migapp=admin]').remove()"></button>
+            </div>
+          </div>
+          <div class="modal-subtitle">
+            <p class="modal-subtitle">
+              TODO: Admin UI description in subtitle.
+            </p>
+          </div>
+        </div>
+        <div class="modal-body" id="tabs" hx-get="/admin/tabs/account_requests" hx-trigger="load delay:100ms" hx-swap:inherited="innerHTML">
+        </div>
+        <div class="modal-footer" id="admin-modal-footer">
+          <button class="btn btn-light" type="button" hx-on:click="$first('[data-migapp=admin]').remove()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

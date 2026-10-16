@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>HTMX demo</title>
+  <link href="/static/reset.css" rel="stylesheet" />
+  <link href="/static/main.css" rel="stylesheet" />
+  <link href="/static/admin.css" rel="stylesheet" />
+  <script src="/static/main.js"></script>
+  <script src="/static/htmx.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>HTMX demo</h1>
+  </header>
+  <main>
+    <a class="link" hx-get="/admin/modal" hx-target="#admin-modal">Admin page</a>
+    <div id="admin-modal"></div>
+  </main>
+</body>
+
+</html>
